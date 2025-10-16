@@ -1,0 +1,54 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+
+/* Header Styles for Assignment */
+.header {
+  display: flex;
+  height: 80px;
+  width: 100%;
+  align-items: center;
+  justify-content: space-evenly;
+  font-family: "Poppins", sans-serif;
+  margin-top: 10px;
+}
+.header img {
+  height: 100%;
+}
+.title {
+  font-size: 40px;
+  font-weight: 500;
+}
+/* Submit container styles */
+.submit-cont {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  gap: 40px;
+}
+/* Submit button styles. */
+.submit-cont button {
+  padding: 8px 22px;
+  border: 0px solid;
+  border-radius: 10px;
+  font-size: 20px;
+  background-color: rgb(34, 177, 34);
+  color: white;
+  cursor: pointer;
+  text-transform: uppercase;
+}
+.submit-cont button:hover {
+  background-color: #218838;
+  transition: all 0.3s ease;
+  transform: scale(1.05);
+}
+/* Timer styles */
+.time p {
+  font-size: 18px;
+  font-weight: 500;
+  color: gray;
+}
+.time p span {
+  font-size: 22px;
+  font-weight: 600;
+  color: black;
+}

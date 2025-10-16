@@ -1,0 +1,50 @@
+body {
+  font-family: "Roboto", sans-serif;
+}
+.ques-count {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 20px 20px 0px 20px;
+  font-family: "Roboto", sans-serif;
+}
+/* Styling the total container and it's element's. */
+.ques-count p {
+  font-size: 18px;
+  font-weight: 450;
+  color: #333;
+}
+/* Question style. */
+.question h2 {
+  font-size: 30px;
+  font-weight: 500;
+  color: #111;
+  margin: 20px;
+}
+/* Options style. */
+.options {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  margin: 20px;
+}
+.options input {
+  margin-right: 5px;
+}
+/* Next button styles. */
+#next-btn {
+  padding: 10px 20px;
+  position: fixed;
+  bottom: 20px;
+  right: 10px;
+  border: 0px solid;
+  border-radius: 5px;
+  background-color: blue;
+  color: white;
+  font-size: 16px;
+  cursor: pointer;
+}
+#next-btn:hover {
+  background-color: darkblue;
+  transition: all ease 0.3s;
+}
