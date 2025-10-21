@@ -82,6 +82,18 @@ app.post("/api/answers", async (req, res) => {
   }
 });
 
+//Login page route.
+app.post("/api/login", (req, res) => {
+  const { username, password } = req.body;
+
+  // Dummy authentication logic (replace with real logic)
+  if (username === "sowmyashree@teqrox.in" && password === "Sowmya@123") {
+    return res.status(200).json({ message: "Login successful" });
+  } else {
+    return res.status(401).json({ error: "Invalid credentials" });
+  }
+});
+
 // Start server
 app.listen(PORT, () => {
   console.log(`🚀 Server running on http://localhost:${PORT}`);
