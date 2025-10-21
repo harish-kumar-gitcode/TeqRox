@@ -2,7 +2,9 @@ import { useState, useEffect } from "react";
 import "./Header.css";
 
 function Header({ started, setStarted, onTimeUp }) {
-  const [mins, setMins] = useState(40);
+  // 🕒 Add hours in state
+  const [hours, setHours] = useState(1); // example: 1 hour timer
+  const [mins, setMins] = useState(30);
   const [secs, setSecs] = useState(0);
   const [isRunning, setIsRunning] = useState(false);
 
@@ -12,12 +14,21 @@ function Header({ started, setStarted, onTimeUp }) {
     const timer = setInterval(() => {
       setSecs((prevSecs) => {
         if (prevSecs > 0) return prevSecs - 1;
+
+        // seconds reached 0
         if (mins > 0) {
           setMins((prevMins) => prevMins - 1);
           return 59;
         }
 
-        // 🚨 When timer reaches 0:00
+        // minutes reached 0
+        if (hours > 0) {
+          setHours((prevHours) => prevHours - 1);
+          setMins(59);
+          return 59;
+        }
+
+        // 🚨 When hours, mins, and secs all reach 0
         clearInterval(timer);
         handleTimeUp();
         return 0;
@@ -25,18 +36,17 @@ function Header({ started, setStarted, onTimeUp }) {
     }, 1000);
 
     return () => clearInterval(timer);
-  }, [isRunning, mins]);
+  }, [isRunning, hours, mins]);
 
-  // Function to handle what happens when timer runs out
+  // ⏰ When time is up
   const handleTimeUp = () => {
     setIsRunning(false);
     setStarted(false);
 
     if (typeof onTimeUp === "function") {
-      onTimeUp(); // notify parent (e.g., QuestionCard) to submit answers
+      onTimeUp(); // notify parent to submit answers
     }
 
-    // Redirect to homepage after slight delay
     setTimeout(() => {
       alert("⏰ Time’s up! Your test has been submitted.");
       window.location.href = "https://teqrox.com";
@@ -46,7 +56,7 @@ function Header({ started, setStarted, onTimeUp }) {
   const handleButtonClick = () => {
     if (!isRunning) {
       setIsRunning(true);
-      setStarted(true); // show questions
+      setStarted(true);
     }
   };
 
@@ -61,6 +71,7 @@ function Header({ started, setStarted, onTimeUp }) {
           <p>
             Time Left:{" "}
             <span>
+              {hours.toString().padStart(2, "0")}:
               {mins.toString().padStart(2, "0")}:
               {secs.toString().padStart(2, "0")}
             </span>

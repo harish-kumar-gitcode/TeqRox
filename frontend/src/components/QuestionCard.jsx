@@ -9,7 +9,7 @@ const QuestionCard = forwardRef(({ submitRef }, ref) => {
 
   // Fetch questions
   useEffect(() => {
-    fetch("https://teqrox.onrender.com/api/questions")
+    fetch("http://localhost:3000/api/questions")
       .then((res) => res.json())
       .then((data) => {
         setQuestions(data.questions);
@@ -31,7 +31,7 @@ const QuestionCard = forwardRef(({ submitRef }, ref) => {
   const submitAnswers = async () => {
     console.log("Submitting answers:", answers);
     try {
-      await fetch("https://teqrox.onrender.com/api/answers", {
+      await fetch("http://localhost:3000/api/answers", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ answers }),
