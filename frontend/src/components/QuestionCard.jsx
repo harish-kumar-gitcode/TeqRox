@@ -54,7 +54,8 @@ const QuestionCard = forwardRef(({ submitRef }, ref) => {
   };
 
   if (loading) return <div>Loading...</div>;
-  if (!questions.length) return <div>No questions available.</div>;
+if (!Array.isArray(questions) || !questions.length)
+  return <div>No questions available.</div>;
 
   const currentQuestion = questions[currentIndex];
 
